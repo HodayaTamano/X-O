@@ -1,10 +1,11 @@
 #pragma once
+#include <iostream>
 
-struct Place {
-	int x,y;
-	Place(int x, int y): x(x), y(y) {}
+class Place {
+    int x;
+    int y;
+    Place(int x, int y);
+    Place (const Place& otherP);
+    int get_X ();
+    int get_Y();
 };
-
-inline ostream& operator << (ostream& os, const Place& p) {
-	return (os << p.x << "," << p.y);
-}

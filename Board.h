@@ -1,60 +1,50 @@
+using namespace std;
 #pragma once
 #include <iostream>
-using namespace std;
-
-#include "IllegalCharException.h"
+#include "Place.h"
 #include "IllegalCoordinateException.h"
-#include "Coordinate.h"
+#include "IllegalCharException.h"
+#include "Character.h"
 
 
-class BoardLocation {
-	char& loc;
-public:
-	BoardLocation(char& loc): loc(loc) {}
-	BoardLocation& operator=(char c);
-	operator char() const { return loc; }
+class Board{
+
+    int size;
+    Character matrix[][]=new matrix[size][size];
+
+  public: 
+
+    Board(int size){ 
+        Character matrix[][]=new matrix[size][size];
+        for(int i=0, i<size; i++){
+            for(int j=0, j<size; j++){
+                matrix[i][j]=Character();
+            }
+        }
+    }
+    
+    Board& char operator [] (Place p){
+        char c;
+        c = Place(a,b);
+        return c;
+    }
+    //
+    Board& operator = (char c){
+        for(int i=0, i<size; i++){
+            for(int j=0, j<size; j++){
+                matrix[i][j]=Place(c);
+            }
+        }
+    }
+    void isLegal(Place p){
+        if (p > size)
+
+    }
+
+    ostream& operator <<(ostream& os, const Board& b);
+    Place& operator [] (int a, int b);
+
+
+
+    //board()
 };
-/**
- * Represents a tic-tac-toe board.
- */
-class Board {
-	char* theChars;
-	int theSize;
-
-	uint offset(int x, int y) const {
-		return x + y*theSize;
-	}
-
-public:
-	Board(int size): theSize(size), theChars(new char[size*size]) {
-		operator=('.');
-	}
-
-	Board& operator=(char c);
-
-	char operator[] (Coordinate c) const {
-		if (c.x>=theSize || c.x<0 || c.y>=theSize || c.y<0)
-			throw IllegalCoordinateException{c};
-		return theChars[offset(c.x,c.y)];
-	}
-
-	BoardLocation operator[] (Coordinate c) {
-		if (c.x>=theSize || c.x<0 || c.y>=theSize || c.y<0)
-			throw IllegalCoordinateException{c};
-		return BoardLocation(theChars[offset(c.x,c.y)]);
-	}
-
-	ostream& output(ostream& out) const {
-		for (int y=0; y<theSize; ++y) {
-			for (int x=0; x<theSize; ++x) {
-				out << theChars[offset(x,y)];
-			}
-			out << endl;
-		}
-		return out;
-	}
-};
-
-inline ostream& operator<<(ostream& out, const Board& board) {
-	return board.output(out);
-}

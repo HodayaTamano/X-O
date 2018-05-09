@@ -1,8 +1,13 @@
-#pragma once
 
-class IllegalCharException {
-	char c;
-public:
-	IllegalCharException(char c): c(c) {}
-	char theChar() const { return c; }
-};
+using namespace std;
+#pragma once
+#include <iostream>
+#include "Board.h"
+#include "IllegalCoordinateException.h"
+#include "Place.h"
+#include "Character.h"
+
+
+char IllegalCharException::theChar() const{
+  return c;
+}

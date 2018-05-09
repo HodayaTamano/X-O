@@ -1,7 +1,12 @@
-#include "Board.h"
-
+#pragma once
 #include <iostream>
 using namespace std;
+#include "Board.h"
+#include "IllegalCoordinateException.h"
+#include "IllegalCharException.h"
+#include "Character.h"
+#include "Place.h"
+
 
 int main() {
 	Board board1{4};  // Initializes a 4x4 board
@@ -11,8 +16,10 @@ int main() {
 	....
 	....
 	*/
+	cout << board1[{1,2}] << endl; // .
 	board1[{1,1}]='X';
 	board1[{1,2}]='O';
+	char c = board1[{1,2}]; cout << c << endl; // O
 	cout << board1 << endl;  /* Shows the following board:
 	....
 	.XO.
@@ -54,4 +61,3 @@ int main() {
 
 	return 0;
 }
-
