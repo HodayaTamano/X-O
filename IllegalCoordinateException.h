@@ -1,10 +1,13 @@
-#include <exception>
-using namespace std;
 #pragma once
-#include <iostream>
 
-class IllegalCoordinateException{
-    theCoordinate(){
-        
-    }
-}
+#include "Coordinate.h"
+#include <string>
+using namespace std;
+
+class IllegalCoordinateException {
+	Coordinate c;
+public:
+	IllegalCoordinateException(Coordinate c): c(c) {}
+	Coordinate theCoordinate() const { return c; }
+};
+

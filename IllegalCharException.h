@@ -1,11 +1,8 @@
-#include <exception>
-using namespace std;
 #pragma once
-#include <iostream>
 
-class IllegalCharException{
-    char c;
-    theChar(){
-        throw c;
-    }
-}
+class IllegalCharException {
+	char c;
+public:
+	IllegalCharException(char c): c(c) {}
+	char theChar() const { return c; }
+};
